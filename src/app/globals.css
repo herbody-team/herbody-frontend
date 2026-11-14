@@ -12,3 +12,68 @@
 body {
   font-family: var(--font-poppins), sans-serif;
 }
+
+* { box-sizing: border-box; }
+.auth-page { min-height: 100vh; background: linear-gradient(135deg, #fff8fb, #f8e9f1); color: #332433; }
+.auth-header { height: 62px; display: flex; align-items: center; justify-content: space-between; padding: 0 4%; border-bottom: 1px solid #f4dce8; background: #fff9fc; }
+.auth-logo { color: #a63c6c; font: 20px Georgia, serif; text-decoration: none; }
+.auth-header-links { display: flex; gap: 25px; font-size: 12px; }
+.auth-header-links a { color: #513d4b; text-decoration: none; }
+.auth-content { max-width: 1000px; margin: 0 auto; padding: 4px 20px 25px; }
+.auth-grid { display: grid; grid-template-columns: .92fr 1.08fr; align-items: stretch; min-height: 650px; border-radius: 0 38px 38px 38px; overflow: hidden; box-shadow: 0 18px 35px #8d5b6d24; }
+.feature-panel { padding: 38px 34px 25px; background: linear-gradient(155deg, #fff2f8, #f9e8f1); }
+.eyebrow { display: inline-block; border-radius: 20px; background: #fff; color: #a63c6c; padding: 6px 11px; font-size: 9px; font-weight: 700; letter-spacing: .06em; }
+.feature-panel h1 { margin: 23px 0 7px; font: 32px/1.05 Georgia, serif; }
+.feature-panel h1 em { color: #a63c6c; }
+.feature-panel > p { font-size: 12px; line-height: 1.55; color: #6b5964; max-width: 360px; }
+.body-image-wrap { margin: 52px 4px 24px; height: 250px; overflow: hidden; border-radius: 18px; box-shadow: 0 8px 14px #925a7038; }
+.body-image-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.feature-pills { display: flex; gap: 10px; }
+.feature-pills span { padding: 8px 12px; border-radius: 20px; background: #fff; font-size: 10px; color: #63505b; }
+.feature-panel small { display: block; margin-top: 14px; color: #a63c6c; font-size: 10px; }
+.auth-card { background: #fff; padding: 40px 10%; }
+.sparkle { display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; color: #a63c6c; background: #fce8f3; }
+.auth-card h2 { margin: 12px 0 2px; font: 34px/1.02 Georgia, serif; max-width: 390px; }
+.form-subtitle { margin: 0 0 20px; color: #75646d; font-size: 13px; line-height: 1.5; }
+.social-buttons { display: flex; gap: 8px; }
+.social-buttons button { flex: 1; border: 0; border-radius: 22px; background: #fff0f8; padding: 11px 8px; color: #4a3543; font-weight: 600; }
+.divider { display: flex; align-items: center; gap: 10px; margin: 17px 0; color: #826f7c; font-size: 10px; text-transform: uppercase; }
+.divider:before, .divider:after { content: ""; height: 1px; background: #f0dce5; flex: 1; }
+form label { position: relative; display: block; margin: 13px 0; font-size: 11px; font-weight: 600; color: #433441; }
+form input:not([type="checkbox"]) { display: block; width: 100%; margin-top: 6px; border: 1px solid transparent; border-radius: 24px; outline: 0; background: #fff0f8; padding: 13px 16px; color: #433441; }
+form input:not([type="checkbox"]):focus { border-color: #b04775; box-shadow: 0 0 0 3px #b0477520; }
+form label small { display: block; margin-top: 5px; color: #907d88; font-weight: 400; }
+.field-link { position: absolute; right: 3px; top: 0; color: #aa3e70; font-size: 10px; text-decoration: none; }
+.checkbox { display: flex; gap: 7px; align-items: center; font-weight: 400; color: #70606a; }
+.checkbox input { accent-color: #a63c6c; }
+.primary-button { width: 100%; margin-top: 5px; border: 0; border-radius: 24px; padding: 13px; background: #a63c6c; color: white; font-weight: 700; box-shadow: 0 7px 12px #a63c6c38; cursor: pointer; }
+.primary-button:disabled { opacity: .65; cursor: wait; }
+.form-error, .form-success { font-size: 11px; margin: 8px 0; }
+.form-error { color: #b42345; }.form-success { color: #287452; }
+.switch-text { text-align: center; color: #796872; font-size: 12px; margin-top: 22px; }
+.switch-text a { color: #a63c6c; font-weight: 600; }
+.text-button { display: block; margin: 14px auto 0; border: 0; background: transparent; color: #a63c6c; font-size: 11px; font-weight: 700; cursor: pointer; }
+.auth-disclaimer { margin: 0 auto; max-width: 1000px; padding: 0 20px 18px; text-align: center; color: #98818d; font-size: 10px; }
+.auth-single { max-width: 520px; margin: 35px auto; }
+.auth-single .auth-card { border-radius: 28px; box-shadow: 0 18px 35px #8d5b6d24; }
+@media (max-width: 760px) {
+  .auth-header { padding: 0 20px; }.auth-header-links { gap: 10px; font-size: 10px; }
+  .auth-grid { display: block; border-radius: 0 0 25px 25px; }.feature-panel { padding: 28px 25px; }.feature-panel h1 { font-size: 27px; }.body-image-wrap { margin-top: 25px; height: 180px; }.auth-card { padding: 30px 25px; }.auth-card h2 { font-size: 29px; }
+}
+
+.dashboard { min-height: 100vh; display: flex; background: #fff8fb; color: #493743; }
+.dashboard-sidebar { width: 194px; flex: 0 0 194px; display: flex; flex-direction: column; padding: 21px 13px 15px; background: #fff0f8; border-right: 1px solid #f5dce9; }
+.dashboard-brand { display: flex; gap: 9px; align-items: center; color: #aa4170; text-decoration: none; }
+.brand-mark { display: grid; place-items: center; width: 29px; height: 29px; border-radius: 50%; color: white; background: #b64c7d; font-size: 13px; }
+.dashboard-brand strong { display: block; font: 16px Georgia, serif; }.dashboard-brand small { display: block; font-size: 7px; line-height: 1.15; letter-spacing: .12em; }
+.dashboard-label { margin: 35px 7px 8px; color: #917687; font-size: 8px; font-weight: 700; letter-spacing: .12em; }
+.dashboard-nav { display: flex; align-items: center; gap: 11px; width: 100%; margin: 2px 0; padding: 9px 10px; border: 0; border-radius: 18px; background: transparent; color: #674d5d; font-size: 11px; text-align: left; cursor: pointer; }
+.dashboard-nav span { width: 14px; color: #76596a; font-size: 16px; text-align: center; }.dashboard-nav.active { color: #4b3040; background: #f2b5d5; font-weight: 700; }
+.dashboard-profile { display: flex; align-items: center; gap: 7px; margin-top: auto; font-size: 9px; }.dashboard-profile strong, .dashboard-profile small { display: block; }.dashboard-profile small { color: #907886; margin-top: 2px; }.profile-avatar { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; color: white; background: #aa4170; }.dashboard-profile button { margin-left: auto; border: 0; background: transparent; color: #765d6b; }
+.logout-button { display: flex; align-items: center; gap: 8px; margin-top: 16px; padding: 8px 10px; border: 1px solid #edcbdc; border-radius: 16px; color: #9c3d6c; background: transparent; font-size: 10px; cursor: pointer; }.logout-button:hover { background: #fff; }.logout-button:disabled { opacity: .6; cursor: wait; }
+.dashboard-main { min-width: 0; flex: 1; }.dashboard-topbar { display: flex; justify-content: space-between; align-items: center; height: 55px; padding: 0 25px; border-bottom: 1px solid #f5dfe9; color: #987e8d; font-size: 9px; }.dashboard-topbar b { padding: 0 5px; }.dashboard-topbar strong { color: #ae4b77; }.cycle-badge { border-radius: 15px; padding: 7px 12px; color: #a64370; background: #fbe0ef; font-size: 8px; font-weight: 700; }
+.dashboard-heading { display: flex; justify-content: space-between; align-items: center; padding: 13px 25px 0; }.dashboard-eyebrow { margin: 0; color: #b34877; font-size: 8px; font-weight: 700; letter-spacing: .12em; }.dashboard-heading h1 { margin: 5px 0 2px; font: 21px Georgia, serif; }.dashboard-heading > div > p:last-child { margin: 0; color: #846e7b; font-size: 10px; }
+.body-tabs { display: flex; gap: 3px; padding: 4px; border-radius: 20px; background: #fff; box-shadow: 0 3px 12px #9b61701a; }.body-tabs button { border: 0; border-radius: 16px; padding: 7px 12px; color: #6b5260; background: transparent; font-size: 9px; }.body-tabs .selected { color: #8e3763; background: #fce4f1; font-weight: 700; }
+.atlas-stage { position: relative; display: flex; justify-content: center; align-items: center; min-height: 590px; padding: 30px 4%; }.anatomy-visual { position: relative; width: min(460px, 62%); height: 500px; overflow: hidden; border-radius: 14px; background: linear-gradient(145deg, #efd0cf, #f8e5e3 65%, #fff8f8); }.anatomy-glow { position: absolute; inset: 20px 20%; border-radius: 50%; background: #f6dbd8; filter: blur(25px); }.model-figure { position: absolute; left: 50%; top: 48%; width: 180px; height: 410px; transform: translate(-50%, -50%); filter: drop-shadow(0 12px 12px #a84a6d35); }.model-figure span { position: absolute; display: block; }.model-head { top: 0; left: 70px; width: 40px; height: 52px; border: 2px solid #fff; border-radius: 48% 48% 45% 45%; background: linear-gradient(110deg, #f8c7c9, #d98da5 62%, #f8c7c9); }.model-neck { top: 47px; left: 80px; width: 20px; height: 33px; background: #eaa7b5; }.model-torso { top: 70px; left: 40px; width: 100px; height: 185px; border: 2px solid #fff; border-radius: 46% 46% 28% 28%; background: linear-gradient(90deg, #e797ac, #f9d1cf 47%, #d57b9c); clip-path: polygon(28% 0,72% 0,100% 24%,78% 70%,68% 100%,32% 100%,22% 70%,0 24%); }.model-arm { top: 83px; width: 25px; height: 190px; border: 2px solid #fff; border-radius: 50%; background: #e395ab; }.model-arm.left { left: 22px; transform: rotate(9deg); }.model-arm.right { right: 22px; transform: rotate(-9deg); }.model-leg { top: 228px; width: 35px; height: 180px; border: 2px solid #fff; border-radius: 20px 20px 45% 45%; background: linear-gradient(90deg, #d7819c, #f6c3c4 48%, #d27898); }.model-leg.left { left: 55px; transform: rotate(2deg); }.model-leg.right { right: 55px; transform: rotate(-2deg); }.model-organ { z-index: 1; border: 2px solid #fff; border-radius: 50%; background: #b64173; box-shadow: 0 0 12px #b6417399; }.model-organ.heart { top: 108px; left: 83px; width: 16px; height: 16px; }.model-organ.uterus { top: 186px; left: 71px; width: 38px; height: 28px; border-radius: 45% 45% 50% 50%; }.model-focus { position: absolute; top: 47%; left: calc(50% + 45px); z-index: 2; border-radius: 9px; padding: 5px 7px; color: white; background: #443044; font-size: 7px; font-weight: 600; }.scale-label { position: absolute; bottom: 10px; left: 14px; border-radius: 12px; padding: 5px 9px; color: #9c7d8c; background: #fff9; font-size: 8px; font-weight: 600; }
+.organ-card { z-index: 1; width: 225px; margin: 90px 0 0 -25px; padding: 14px; border-radius: 12px; background: #fff; box-shadow: 0 10px 24px #9462772b; }.organ-card-top { display: flex; justify-content: space-between; align-items: center; font-size: 7px; }.organ-card-top > span { border-radius: 8px; padding: 4px 7px; color: #a13d6d; background: #f5b5d5; font-weight: 700; }.organ-card-top small { color: #a23d6d; }.organ-card h2 { margin: 9px 0 4px; font: 21px Georgia, serif; }.organ-card > p { margin: 0; color: #806b77; font-size: 9px; line-height: 1.4; }.organ-stats { display: flex; gap: 6px; margin: 13px 0; }.organ-stats div { flex: 1; padding: 9px 7px; border-radius: 25px; background: #fff0f8; }.organ-stats small, .organ-stats strong, .organ-stats span { display: block; }.organ-stats small { color: #977e8d; font-size: 7px; }.organ-stats strong { margin: 3px 0; color: #a83f70; font-size: 11px; }.organ-stats span { color: #7d6673; font-size: 7px; }.discover-button { width: 100%; display: flex; justify-content: space-between; border: 0; border-radius: 15px; padding: 8px 11px; color: white; background: #a83d6d; font-size: 9px; }.dashboard-footer { display: flex; justify-content: space-between; padding: 0 25px 16px; color: #997f8e; font-size: 8px; letter-spacing: .06em; }
+@media (max-width: 700px) { .dashboard-sidebar { width: 62px; flex-basis: 62px; padding: 16px 8px; }.dashboard-brand span:last-child, .dashboard-label, .dashboard-nav:not(.active)::after, .dashboard-nav { font-size: 0; }.dashboard-nav { justify-content: center; padding: 10px 0; }.dashboard-nav span { font-size: 17px; }.dashboard-nav.active { font-size: 0; }.dashboard-nav.active span { font-size: 17px; }.dashboard-profile span:not(.profile-avatar), .dashboard-profile button { display: none; }.dashboard-heading { display: block; }.body-tabs { margin-top: 14px; width: max-content; }.atlas-stage { min-height: 530px; padding: 20px 2%; }.anatomy-visual { width: 88%; height: 440px; }.organ-card { position: absolute; right: 3%; bottom: 15px; width: 205px; margin: 0; }.dashboard-footer { font-size: 7px; }.dashboard-footer span:last-child { display: none; } }
