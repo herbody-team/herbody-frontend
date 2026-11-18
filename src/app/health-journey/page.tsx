@@ -1,9 +1,25 @@
 "use client";
 
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { apiRequest, getAccessToken } from "@/lib/api";
+import OrganCard from "@/components/body/OrganCard";
+import { ORGANS } from "@/lib/organs";
+import type { OrganId } from "@/types/organ";
+
+const BodyViewer = dynamic(
+  () => import("@/components/body/BodyViewer"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="grid h-full place-items-center text-sm text-ink/70">
+        Loading the interactive body…
+      </div>
+    ),
+  },
+);
 
 const navigation = [
   ["✣", "Interactive Body"],
@@ -14,6 +30,7 @@ const navigation = [
 export default function HealthJourneyPage() {
   const [active, setActive] = useState("Interactive Body");
   const [loggingOut, setLoggingOut] = useState(false);
+  const [selectedOrgan, setSelectedOrgan] = useState<OrganId | null>(null);
   const router = useRouter();
 
   async function logout() {
@@ -80,23 +97,41 @@ export default function HealthJourneyPage() {
         </div>
         <div className="atlas-stage">
           <div className="anatomy-visual">
-            <div className="anatomy-glow" />
-            <div className="model-figure" aria-label="Interactive 3D anatomical model">
-              <span className="model-head" /><span className="model-neck" /><span className="model-torso" />
-              <span className="model-arm left" /><span className="model-arm right" />
-              <span className="model-leg left" /><span className="model-leg right" />
-              <span className="model-organ heart" /><span className="model-organ uterus" />
+            <div className="h-full w-full" aria-label="Interactive 3D anatomical model">
+              <BodyViewer
+                selectedOrgan={selectedOrgan}
+                onSelect={setSelectedOrgan}
+              />
             </div>
-            <span className="model-focus">● UTERUS</span>
             <small className="scale-label">◉ &nbsp; Coronal Educational Stance · Scale 1:1</small>
           </div>
-          <article className="organ-card">
-            <div className="organ-card-top"><span>PELVIC RESONANCE</span><small>● Active Node</small></div>
-            <h2>The Uterus</h2>
-            <p>Layered smooth muscle architecture in monthly synchronization with endocrine signaling.</p>
-            <div className="organ-stats"><div><small>LINING DEPTH</small><strong>11.2 mm</strong><span>Secretory phase</span></div><div><small>CADENCE</small><strong>28-Day Cycle</strong><span>Stem-cell renewal</span></div></div>
-            <button className="discover-button">Discover Organ <b>→</b></button>
-          </article>
+          <div className="organ-card">
+            <OrganCard selectedOrgan={selectedOrgan} />
+            <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label="Choose an organ">
+              {(Object.keys(ORGANS) as OrganId[]).map((organId) => {
+                const organ = ORGANS[organId];
+                const isSelected = selectedOrgan === organId;
+                return (
+                  <button
+                    key={organId}
+                    type="button"
+                    aria-pressed={isSelected}
+                    onClick={() => setSelectedOrgan(organId)}
+                    className={`rounded-full border px-3 py-2 text-xs font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-purple ${
+                      isSelected
+                        ? "border-brand-pink bg-brand-pink text-white"
+                        : "border-brand-purple/15 bg-white text-brand-purple"
+                    }`}
+                  >
+                    {organ.label}
+                  </button>
+                );
+              })}
+            </div>
+            <p className="sr-only" aria-live="polite" aria-atomic="true">
+              {selectedOrgan ? `${ORGANS[selectedOrgan].label} selected.` : "No organ selected."}
+            </p>
+          </div>
         </div>
         <footer className="dashboard-footer"><span>♧ CLINICAL MODEL · 3D FEMTECH ANATOMICAL ATLAS</span><span>Select pin or rotate angle to view hormonal dynamics</span></footer>
       </section>
