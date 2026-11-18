@@ -1,6 +1,6 @@
 "use client";
 
-import { Bounds, Center, OrbitControls, useGLTF } from "@react-three/drei";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas, type ThreeEvent } from "@react-three/fiber";
 import { Component, type ReactNode, useEffect, useMemo, useState } from "react";
 import * as THREE from "three";
@@ -107,30 +107,26 @@ function Model({ selectedOrgan, onSelect }: BodyViewerProps) {
   }
 
   return (
-    <Bounds fit clip observe margin={1.25}>
-      <Center>
-        <primitive
-          object={scene}
-          onClick={(event: ThreeEvent<MouseEvent>) => {
-            const clickedMesh = event.object as THREE.Mesh;
-            const organId = (Object.keys(ORGANS) as OrganId[]).find((id) =>
-              ORGANS[id].meshNames.includes(clickedMesh.name),
-            );
-            if (organId) handleClick(event, organId);
-            else event.stopPropagation();
-          }}
-          onPointerOver={(event: ThreeEvent<PointerEvent>) => {
-            event.stopPropagation();
-            const hoveredMesh = event.object as THREE.Mesh;
-            const organId = (Object.keys(ORGANS) as OrganId[]).find((id) =>
-              ORGANS[id].meshNames.includes(hoveredMesh.name),
-            );
-            setHoveredOrgan(organId ?? null);
-          }}
-          onPointerOut={() => setHoveredOrgan(null)}
-        />
-      </Center>
-    </Bounds>
+    <primitive
+      object={scene}
+      onClick={(event: ThreeEvent<MouseEvent>) => {
+        const clickedMesh = event.object as THREE.Mesh;
+        const organId = (Object.keys(ORGANS) as OrganId[]).find((id) =>
+          ORGANS[id].meshNames.includes(clickedMesh.name),
+        );
+        if (organId) handleClick(event, organId);
+        else event.stopPropagation();
+      }}
+      onPointerOver={(event: ThreeEvent<PointerEvent>) => {
+        event.stopPropagation();
+        const hoveredMesh = event.object as THREE.Mesh;
+        const organId = (Object.keys(ORGANS) as OrganId[]).find((id) =>
+          ORGANS[id].meshNames.includes(hoveredMesh.name),
+        );
+        setHoveredOrgan(organId ?? null);
+      }}
+      onPointerOut={() => setHoveredOrgan(null)}
+    />
   );
 }
 
@@ -172,7 +168,14 @@ export default function BodyViewer(props: BodyViewerProps) {
         style={{ width: "100%", height: "100%", display: "block" }}
         dpr={[1, 2]}
         gl={{ alpha: true, antialias: true }}
-        camera={{ position: [0, 0, 3], fov: 35, near: 0.1, far: 100 }}
+        camera={{ position: [0, 0.55, 2.2], fov: 32, near: 0.1, far: 100 }}
+        fallback={
+          <div className="grid h-full min-h-80 place-items-center p-6 text-center">
+            <p className="font-semibold text-brand-purple">
+              WebGL is unavailable. Enable hardware acceleration to view the 3D body.
+            </p>
+          </div>
+        }
         onPointerMissed={() => props.onSelect(null)}
         onCreated={({ gl }) => {
           gl.outputColorSpace = THREE.SRGBColorSpace;
@@ -184,6 +187,7 @@ export default function BodyViewer(props: BodyViewerProps) {
         <Model {...props} />
         <OrbitControls
           makeDefault
+          target={[0, 0.55, 0]}
           enablePan={false}
           enableDamping
           dampingFactor={0.06}
