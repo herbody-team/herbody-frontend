@@ -38,11 +38,26 @@ export default function HealthJourneyPage() {
         </Link>
         <p className="dashboard-label">CURRICULUM</p>
         <nav>
-          {navigation.map(([icon, label]) => (
-            <button key={label} className={active === label ? "dashboard-nav active" : "dashboard-nav"} onClick={() => setActive(label)}>
-              <span>{icon}</span>{label}
-            </button>
-          ))}
+          {navigation.map(([icon, label]) =>
+            label === "Interactive Body" ? (
+              <Link
+                key={label}
+                href="/interactive-body"
+                className={active === label ? "dashboard-nav active" : "dashboard-nav"}
+                onClick={() => setActive(label)}
+              >
+                <span>{icon}</span>{label}
+              </Link>
+            ) : (
+              <button
+                key={label}
+                className={active === label ? "dashboard-nav active" : "dashboard-nav"}
+                onClick={() => setActive(label)}
+              >
+                <span>{icon}</span>{label}
+              </button>
+            ),
+          )}
         </nav>
         <div className="dashboard-profile">
           <span className="profile-avatar">♟</span>
