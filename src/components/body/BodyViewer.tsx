@@ -134,27 +134,6 @@ useGLTF.preload(MODEL_URL);
 
 export default function BodyViewer(props: BodyViewerProps) {
   const [retryKey, setRetryKey] = useState(0);
-  const [webglSupported] = useState(() => {
-    if (typeof document === "undefined") return true;
-    const canvas = document.createElement("canvas");
-    return (
-      Boolean(canvas.getContext("webgl2")) ||
-      Boolean(canvas.getContext("webgl"))
-    );
-  });
-
-  if (!webglSupported) {
-    return (
-      <div className="grid h-full min-h-80 place-items-center p-6 text-center">
-        <div>
-          <p className="font-semibold text-brand-purple">WebGL is unavailable.</p>
-          <p className="mt-2 text-sm text-ink/70">
-            Enable hardware acceleration or open this page in a WebGL-enabled browser.
-          </p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <ViewerErrorBoundary
