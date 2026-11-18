@@ -19,7 +19,12 @@ export default function HealthyLifePage() {
       </section>
       <section className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" aria-label="Healthy Life topics">
         {topics.map(([title, description]) => (
-          <PlaceholderCard key={title} title={title} description={description} />
+          <PlaceholderCard
+            key={title}
+            title={title}
+            description={description}
+            href={title === "Explore the body" ? "/interactive-body" : undefined}
+          />
         ))}
       </section>
     </div>
